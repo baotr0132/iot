@@ -1,0 +1,24 @@
+{
+    "relay1": [
+        {
+            "time": "19:16",
+            "action": "on"
+        },
+        {
+            "time": "19:17",
+            "action": "off"
+        }
+    ],
+    "relay2": [
+        {
+            "time": "10:00",
+            "action": "on"
+        }
+    ],
+    "relay3": [
+        {
+            "time": "09:00",
+            "action": "off"
+        }
+    ]
+}

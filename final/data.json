@@ -1,0 +1,92 @@
+[
+    {
+        "id": "0FJ0V6C3K6ZFQAT3H9J93AHYZQ",
+        "value": "14",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:56Z",
+        "created_epoch": 1711206236,
+        "expiration": "2024-04-22T15:03:56Z"
+    },
+    {
+        "id": "0FJ0V6B4PN2ZPRN9ZJ0A1JR27K",
+        "value": "12",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:53Z",
+        "created_epoch": 1711206233,
+        "expiration": "2024-04-22T15:03:53Z"
+    },
+    {
+        "id": "0FJ0V6A4HAH13DATTK53JZTTAX",
+        "value": "11",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:50Z",
+        "created_epoch": 1711206230,
+        "expiration": "2024-04-22T15:03:50Z"
+    },
+    {
+        "id": "0FJ0V696WTX16ZV1CXY1J8VF7A",
+        "value": "17",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:47Z",
+        "created_epoch": 1711206227,
+        "expiration": "2024-04-22T15:03:47Z"
+    },
+    {
+        "id": "0FJ0V686K3J25J5YTC0D66HXWC",
+        "value": "17",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:43Z",
+        "created_epoch": 1711206223,
+        "expiration": "2024-04-22T15:03:43Z"
+    },
+    {
+        "id": "0FJ0V67AN4C8NDRMEJFXE5QNXW",
+        "value": "17",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:40Z",
+        "created_epoch": 1711206220,
+        "expiration": "2024-04-22T15:03:40Z"
+    },
+    {
+        "id": "0FJ0V6697Z50D3PXMQ3YYJ0ABH",
+        "value": "18",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:37Z",
+        "created_epoch": 1711206217,
+        "expiration": "2024-04-22T15:03:37Z"
+    },
+    {
+        "id": "0FJ0V652GWVHCJZE97HC34F4PG",
+        "value": "13",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:33Z",
+        "created_epoch": 1711206213,
+        "expiration": "2024-04-22T15:03:33Z"
+    },
+    {
+        "id": "0FJ0V640XGTCZJVTVWMASXRAQR",
+        "value": "22",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:30Z",
+        "created_epoch": 1711206210,
+        "expiration": "2024-04-22T15:03:30Z"
+    },
+    {
+        "id": "0FJ0V6386F4VXHEYN2HS42TAD3",
+        "value": "11",
+        "feed_id": 2767118,
+        "feed_key": "temperature",
+        "created_at": "2024-03-23T15:03:27Z",
+        "created_epoch": 1711206207,
+        "expiration": "2024-04-22T15:03:27Z"
+    }
+]

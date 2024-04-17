@@ -1,0 +1,83 @@
+[
+    {
+        "id": "0FJ0VW5ASF77793GNDM7MGJ99G",
+        "value": "24",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:42:01Z",
+        "created_epoch": 1711208521,
+        "expiration": "2024-04-22T15:42:01Z"
+    },
+    {
+        "id": "0FJ0VW4HRYDNV0W6ZCJ4PX9JK5",
+        "value": "23",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:58Z",
+        "created_epoch": 1711208518,
+        "expiration": "2024-04-22T15:41:58Z"
+    },
+    {
+        "id": "0FJ0VW391Y112PR22CA0N2GRAR",
+        "value": "23",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:54Z",
+        "created_epoch": 1711208514,
+        "expiration": "2024-04-22T15:41:54Z"
+    },
+    {
+        "id": "0FJ0VW2EE8A7R6GPQAXVJZJYKR",
+        "value": "22",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:51Z",
+        "created_epoch": 1711208511,
+        "expiration": "2024-04-22T15:41:51Z"
+    },
+    {
+        "id": "0FJ0VW1J45XQSVB3GERAPPAAQC",
+        "value": "26",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:48Z",
+        "created_epoch": 1711208508,
+        "expiration": "2024-04-22T15:41:48Z"
+    },
+    {
+        "id": "0FJ0VW0MP1ZA5W2MDY1ZNFV4TY",
+        "value": "25",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:45Z",
+        "created_epoch": 1711208505,
+        "expiration": "2024-04-22T15:41:45Z"
+    },
+    {
+        "id": "0FJ0VVZXGX63B85VJTYTTSEAJD",
+        "value": "25",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:43Z",
+        "created_epoch": 1711208503,
+        "expiration": "2024-04-22T15:41:43Z"
+    },
+    {
+        "id": "0FJ0VVYTAPH066H8XM0RKPPN8K",
+        "value": "30",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:39Z",
+        "created_epoch": 1711208499,
+        "expiration": "2024-04-22T15:41:39Z"
+    },
+    {
+        "id": "0FJ0VVXDX99DDD4Z6HDZGDGC89",
+        "value": "22",
+        "feed_id": 2767117,
+        "feed_key": "moisture",
+        "created_at": "2024-03-23T15:41:35Z",
+        "created_epoch": 1711208495,
+        "expiration": "2024-04-22T15:41:35Z"
+    }
+]

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+     /*   .temperature {
+            max-width: 700px;
+        }
+        .moisture {
+            max-width: 700px;
+        }*/
+     .xbutton button{
+         margin: 5px;
+     }
+     .container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     }
+     .x-log{
+         border-radius: 5px;
+         border: 2px solid darkblue;
+         height: 150px;
+         margin-left: 5px;
+     }
+     .x-status{
+         margin-bottom: 10px;
+     }
+     .x-relay{
+         margin-left: 10px;
+     }
+     .x-relay span{
+         float: left;
+         margin-right: 10px;
+     }
+     .x-relay span{
+         width: 100px;
+     }
+    </style>
+</head>
+<body>
+    <h1>IoT Dashboard</h1>
+    <div class="container">
+        <div class="xmain col-xl-12 .col-lg-12">
+            <div class="xchart col-xl-8 .col-lg-8" style="float: left;">
+                <div class="temperature">
+                    <canvas id="chart-temperature"></canvas>
+                </div>
+                <div class="moisture">
+                    <canvas id="chart-moisture"></canvas>
+                </div>
+            </div>
+            <div class="xbutton col-xl-4 .col-lg-4" style="float: left;">
+
+                <div class="x-status col-xl-8 .col-lg-8">
+                    <div class="relay-status">Thông tin hiện tại:</div>
+                    <div class="x-relay"><span>Nhiệt độ (°C):</span><div id="x-nhietdo">N/A</div></div>
+                    <div class="x-relay"><span>Độ ẩm (%):</span><div id="x-doam">N/A</div></div>
+                </div>
+
+                <div class="x-status col-xl-8 .col-lg-8">
+                    <div class="relay-status">Trạng thái: <button type="button" onclick="updateRelay()" id="xrefreshStatus" class="btn btn-primary col-xl-2" style="font-size: 10px;padding: 2px;">Refresh</button></div>
+                    <div class="x-relay"><span>Đèn:</span><div id="x-relay1">N/A</div></div>
+                    <div class="x-relay"><span>Quạt:</span><div id="x-relay2">N/A</div></div>
+                    <div class="x-relay"><span>Máy bơm:</span><div id="x-relay3">N/A</div></div>
+                </div>
+                <div class="x-log col-xl-8 .col-lg-8">
+                    <div id="x-text"></div>
+                </div>
+                <button type="button" onclick="fetchCRelay('relay1')" class="btn btn-primary col-xl-8 .col-lg-8">Đèn</button>
+                <button type="button" onclick="fetchCRelay('relay2')" class="btn btn-secondary col-xl-8 .col-lg-8">Quạt</button>
+                <button type="button" onclick="fetchCRelay('relay3')" class="btn btn-success col-xl-8 .col-lg-8">Máy bơm</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+    async function fetchDataTemperature() {
+        const response = await fetch('/temperature');
+        const data = await response.json();
+        return data;
+    }
+
+    async function fetchDataMoisture() {
+        const response = await fetch('/moisture');
+        const data = await response.json();
+        return data;
+    }
+
+    async function fetchDataRelay(key) {
+        const response = await fetch('/relay?key=' + key);
+        const data = await response.json();
+        return data;
+    }
+
+    async function fetchCRelay(key) {
+
+        var dz = document.getElementById("x-" + key).textContent;
+        console.log(dz)
+        if (dz == "Đang bật")
+        {
+            d = "0";
+        }else{
+            d = "1";
+        }
+
+        const response = await fetch('/relay/change?key=' + key + '&data=' + d);
+        const data = await response.json();
+        console.log(data)
+        if (key == "relay1")
+        {
+            key = "Đèn";
+        }else if (key == "relay2")
+        {
+            key = "Quạt";
+        }else if (key == "relay3")
+        {
+            key = "Máy bơm";
+        }
+        alert("Đã thay đổi trạng thái " + key)
+        //return data;
+    }
+
+    async function drawChart() {
+        const data = await fetchDataTemperature();
+        const labels = data.map(item => item.created_at);
+        const values = data.map(item => parseFloat(item.value));
+        var lastDataPoint = data[data.length - 1].value;
+        document.getElementById("x-nhietdo").textContent = lastDataPoint.substring(0, lastDataPoint.indexOf('.') + 2);
+
+//.substring(0, texxx.indexOf('.') + 2)
+        const ctx = document.getElementById('chart-temperature').getContext('2d');
+        if (window.temperatureChart) {
+            window.temperatureChart.destroy(); // Hủy biểu đồ hiện tại nếu đã tồn tại
+        }
+        window.temperatureChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Nhiệt độ',
+                    data: values,
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            },
+            options: {
+                animation: false // Tắt animation
+                // ,scales: {
+                //     y: {
+                //         min: 0, // Giá trị tối thiểu cho trục y
+                //         max: 50 // Giá trị tối đa cho trục y
+                //     }
+                // }
+            }
+        });
+    }
+
+    async function drawChartMoisture() {
+        const data = await fetchDataMoisture();
+        const labels = data.map(item => item.created_at);
+        const values = data.map(item => parseFloat(item.value));
+
+        const lastDataPoint = data[data.length - 1].value;
+        document.getElementById("x-doam").textContent = lastDataPoint.substring(0, lastDataPoint.indexOf('.') + 2);
+
+        const ctx = document.getElementById('chart-moisture').getContext('2d');
+        if (window.moistureChart) {
+            window.moistureChart.destroy(); // Hủy biểu đồ hiện tại nếu đã tồn tại
+        }
+        window.moistureChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Độ ẩm',
+                    data: values,
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            },
+            options: {
+                animation: false // Tắt animation
+            }
+            // ,scales: {
+            //         y: {
+            //             min: 0, // Giá trị tối thiểu cho trục y
+            //             max: 50 // Giá trị tối đa cho trục y
+            //         }
+            //     }
+        });
+    }
+
+    async function  updateRelayStatus(key)
+    {
+        const data = await fetchDataRelay(key);
+        //console.log(data)
+        var r1 = data[0].value;
+        var rkey = data[0].feed_key;
+        if(r1 == "1")
+        {
+            document.getElementById("x-"+rkey).textContent = "Đang bật"
+        }else{
+            document.getElementById("x-"+rkey).textContent = "Đã tắt"
+        }
+    }
+    function updateCharts() {
+        drawChart();
+        drawChartMoisture();
+        updateRelay();
+    }
+
+    function updateRelay() {
+        updateRelayStatus("relay1");
+        updateRelayStatus("relay2");
+        updateRelayStatus("relay3");
+    }
+
+    // Gọi hàm updateCharts() ban đầu
+    updateCharts();
+    updateRelay();
+    // Gọi hàm updateCharts() sau mỗi 5 giây
+    setInterval(updateCharts, 5000);
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
